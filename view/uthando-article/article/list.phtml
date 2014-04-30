@@ -1,0 +1,48 @@
+<?php $this->headTitle('Articles') ?>
+
+<?php if (count($this->models) > 0): ?>
+<table class="table table-hover table-bordered table-condensed">
+	<thead>
+		<tr>
+			<th data-field="articleId">Article Id</th>
+			<th data-field="title">Title</th>
+			<th data-field="slug">Slug</th>
+			<th data-field="pageHits">Page Hits</th>
+			<th data-field="dateCreated">Date Created</th>
+			<th data-field="dateModified">Date Modified</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<?php foreach($this->models as $row): ?>
+		<tr>
+			<td><?php echo $this->escapeHtml($row->getArticleId()); ?></td>
+			<td><?php echo $this->escapeHtml($row->getTitle()); ?></td>
+			<td><?php echo $this->escapeHtml($row->getSlug()); ?></td>
+			<td><?php echo $this->escapeHtml($row->getPageHits()); ?></td>
+			<td><?php echo $this->escapeHtml($this->formatDate($row->getDateCreated())); ?></td>
+			<td><?php echo $this->escapeHtml($this->formatDate($row->getDateModified())); ?></td>
+			<td>
+				<?=$this->partial('uthando-admin/partial/edit-actions', [
+                	'pk'		=> 'articleId',
+                	'id'		=> $row->getArticleId(),
+		    		'tableName'	=> 'article',
+                	'route'		=> 'admin/article/edit',
+		    	]);?>
+			</td>
+		</tr>
+		<?php endforeach; ?>
+	</tbody>
+</table>
+
+<?=$this->paginationControl(
+    $this->models,
+    'Elastic',
+    'application/partial/paginate',
+	['route' => 'admin/article/page']
+); ?>
+
+<?php else: ?>
+<h4>There are no articles yet.</h4>
+<?php endif; ?>
+
