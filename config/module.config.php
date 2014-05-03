@@ -4,17 +4,23 @@ return [
         'userRoles' => [
             'guest' => [
                 'privileges' => [
-                    ['controller' => 'UthandoArticle\Controller\Article', 'action' => ['view']],
+                    'allow' => [
+                        ['controller' => 'UthandoArticle\Controller\Article', 'action' => ['view']],
+                    ],
                 ],
             ],
             'registered' => [
                 'privileges' => [
-                    ['controller' => 'UthandoArticle\Controller\Article', 'action' => [ 'view' ]],
+                    'allow' => [
+                        ['controller' => 'UthandoArticle\Controller\Article', 'action' => [ 'view' ]],
+                    ],
                 ],
             ],
             'admin' => [
                 'privileges' => [
-                    ['controller' => 'UthandoArticle\Controller\Article', 'action' => 'all'],
+                    'allow' => [
+                        ['controller' => 'UthandoArticle\Controller\Article', 'action' => 'all'],
+                    ],
                 ],
             ],
         ],
