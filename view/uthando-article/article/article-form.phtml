@@ -11,13 +11,53 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
             <div class="span6">
                 <fieldset>
            	        <legend>Article Details</legend>
-                    <?=$this->ztbFormElement($form->get('title')); ?>
+                    <div class="control-group<?php if ($form->get('title')->getMessages()) echo ' error'; ?>">
+                        <label class="control-label" for="title"><?=$form->get('title')->getLabel();?></label>
+                        <div class="controls">
+                            <?=$this->formelement($form->get('title')); ?>
+                            <span class="help-block">
+                            <?=$this->formElementErrors($form->get('title'), [
+                                'class' => 'unstyled'
+                            ]); ?>
+                            </span>
+                        </div>
+                    </div>
                     
-                    <?=$this->ztbFormElement($form->get('slug')); ?>
+                     <div class="control-group<?php if ($form->get('slug')->getMessages()) echo ' error'; ?>">
+                        <label class="control-label" for="slug"><?=$form->get('slug')->getLabel();?></label>
+                        <div class="controls">
+                            <?=$this->formelement($form->get('slug')); ?>
+                            <span class="help-block">
+                            <?=$this->formElementErrors($form->get('slug'), [
+                                'class' => 'unstyled'
+                            ]); ?>
+                            </span>
+                        </div>
+                    </div>
                     
-                    <?=$this->ztbFormElement($form->get('keywords')); ?>
+                     <div class="control-group<?php if ($form->get('keywords')->getMessages()) echo ' error'; ?>">
+                        <label class="control-label" for="keywords"><?=$form->get('keywords')->getLabel();?></label>
+                        <div class="controls">
+                            <?=$this->formelement($form->get('keywords')); ?>
+                            <span class="help-block">
+                            <?=$this->formElementErrors($form->get('keywords'), [
+                                'class' => 'unstyled'
+                            ]); ?>
+                            </span>
+                        </div>
+                    </div>
                     
-                    <?=$this->ztbFormElement($form->get('description')); ?>
+                     <div class="control-group<?php if ($form->get('description')->getMessages()) echo ' error'; ?>">
+                        <label class="control-label" for="description"><?=$form->get('description')->getLabel();?></label>
+                        <div class="controls">
+                            <?=$this->formelement($form->get('description')); ?>
+                            <span class="help-block">
+                            <?=$this->formElementErrors($form->get('description'), [
+                                'class' => 'unstyled'
+                            ]); ?>
+                            </span>
+                        </div>
+                    </div>
                 </fieldset>
            	</div>
             
@@ -26,6 +66,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
            	        <legend>Menu</legend>
            	        
                     <?=$this->navigationForm(); ?>
+                    
            	        <div class="control-group">
                         <div class="controls">
                              <label class="radio">
@@ -50,7 +91,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                 <div class="span12">
                 <fieldset>
                     <legend>HTML Content</legend>
-                    <?php echo $this->formElement($form->get('content')); ?>
+                    <?=$this->formElement($form->get('content')); ?>
                 </fieldset>
             </div>
         </div>

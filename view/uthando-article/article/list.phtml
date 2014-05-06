@@ -16,12 +16,12 @@
 	<tbody>
 		<?php foreach($this->models as $row): ?>
 		<tr>
-			<td><?php echo $this->escapeHtml($row->getArticleId()); ?></td>
-			<td><?php echo $this->escapeHtml($row->getTitle()); ?></td>
-			<td><?php echo $this->escapeHtml($row->getSlug()); ?></td>
-			<td><?php echo $this->escapeHtml($row->getPageHits()); ?></td>
-			<td><?php echo $this->escapeHtml($this->formatDate($row->getDateCreated())); ?></td>
-			<td><?php echo $this->escapeHtml($this->formatDate($row->getDateModified())); ?></td>
+			<td><?=$this->escapeHtml($row->getArticleId()); ?></td>
+			<td><?=$this->escapeHtml($row->getTitle()); ?></td>
+			<td><?=$this->escapeHtml($row->getSlug()); ?></td>
+			<td><?=$this->escapeHtml($row->getPageHits()); ?></td>
+			<td><?=$this->escapeHtml($this->formatDate($row->getDateCreated())); ?></td>
+			<td><?=$this->escapeHtml($this->formatDate($row->getDateModified())); ?></td>
 			<td>
 				<?=$this->partial('uthando-admin/partial/edit-actions', [
                 	'pk'		=> 'articleId',

@@ -1,8 +1,7 @@
 <?php $this->headTitle('Edit Article') ?>
-<?php echo $this->ztbFlashMessenger()->render(); ?>
 
-<?php echo $this->partial('uthando-article/article/article-form', array(
+<?=$this->partial('uthando-article/article/article-form', [
 	'form' => $this->form,
 	'formAction' => 'edit',
 	'articleId' => $this->model->getArticleId()
-)); ?>
+]); ?>
