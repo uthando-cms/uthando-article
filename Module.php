@@ -20,11 +20,21 @@ class Module
     
     public function getControllerConfig()
     {
-    	return include __DIR__ . '/config/controller.config.php';
+    	return [
+        	'invokables' => [
+        		'UthandoArticle\Controller\Article' => 'UthandoArticle\Controller\ArticleController',
+        	],
+        ];
     }
     
     public function getServiceConfig()
     {
-    	return include __DIR__ . '/config/service.config.php';
+    	return [
+            'invokables' => [
+                'UthandoArticle\InputFilter\Article'    => 'UthandoArticle\InputFilter\Article',
+                'UthandoArticle\Mapper\Article'         => 'UthandoArticle\Mapper\Article',
+                'UthandoArticle\Service\Article'        => 'UthandoArticle\Service\Article'
+            ]
+        ];
     }
 }

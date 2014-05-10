@@ -32,7 +32,7 @@ class Article extends AbstractService
 		$this->save($article);
 	}
 	
-	public function add(array $post)
+	public function add(array $post, Form $form = null)
 	{
 		if (!$post['slug']) {
 			$post['slug'] = $post['title'];
