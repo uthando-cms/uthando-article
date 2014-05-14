@@ -49,7 +49,8 @@ class Article extends Form
 		    'attributes' => [
 		        'placeholder' => 'HTML Content:',
 		        'class'       => 'editable-textarea',
-		    	'id'          => 'article-content-textarea'
+		    	'id'          => 'article-content-textarea',
+                'rows'        => 25,
 		    ],
 		]);
 		
