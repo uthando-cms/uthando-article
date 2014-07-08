@@ -4,7 +4,7 @@ $routeArray = array('action' => $this->formAction);
 if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
 ?>
 <div class="row">
-    <form class="col-sm-12 form form-horizontal" method="post" action="<?=$this->url('admin/article/edit', $routeArray) ?>">
+    <form class="col-md-12 form form-horizontal" method="post" action="<?=$this->url('admin/article/edit', $routeArray) ?>">
         <fieldset>
         <legend><?=ucwords($this->formAction); ?> Article Form:</legend>
         <div class="row">
@@ -12,8 +12,8 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                 <fieldset>
            	        <legend>Article Details</legend>
                     <div class="form-group<?php if ($form->get('title')->getMessages()) echo ' has-error'; ?>">
-                        <label class="col-sm-4 control-label" for="title"><?=$form->get('title')->getLabel();?></label>
-                        <div class="col-sm-8">
+                        <label class="col-md-4 control-label" for="title"><?=$form->get('title')->getLabel();?></label>
+                        <div class="col-md-8">
                             <?=$this->formelement($form->get('title')->setAttribute('class', 'form-control')); ?>
                             <span class="help-block">
                             <?=$this->formElementErrors($form->get('title'), [
@@ -24,8 +24,8 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                     </div>
                     
                      <div class="form-group<?php if ($form->get('slug')->getMessages()) echo ' has-error'; ?>">
-                        <label class="col-sm-4 control-label" for="slug"><?=$form->get('slug')->getLabel();?></label>
-                        <div class="col-sm-8">
+                        <label class="col-md-4 control-label" for="slug"><?=$form->get('slug')->getLabel();?></label>
+                        <div class="col-md-8">
                             <?=$this->formelement($form->get('slug')->setAttribute('class', 'form-control')); ?>
                             <span class="help-block">
                             <?=$this->formElementErrors($form->get('slug'), [
@@ -36,8 +36,8 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                     </div>
                     
                      <div class="form-group<?php if ($form->get('keywords')->getMessages()) echo ' has-error'; ?>">
-                        <label class="col-sm-4 control-label" for="keywords"><?=$form->get('keywords')->getLabel();?></label>
-                        <div class="col-sm-8">
+                        <label class="col-md-4 control-label" for="keywords"><?=$form->get('keywords')->getLabel();?></label>
+                        <div class="col-md-8">
                             <?=$this->formelement($form->get('keywords')->setAttribute('class', 'form-control')); ?>
                             <span class="help-block">
                             <?=$this->formElementErrors($form->get('keywords'), [
@@ -48,8 +48,8 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                     </div>
                     
                      <div class="form-group<?php if ($form->get('description')->getMessages()) echo ' has-error'; ?>">
-                        <label class="col-sm-4 control-label" for="description"><?=$form->get('description')->getLabel();?></label>
-                        <div class="col-sm-8">
+                        <label class="col-md-4 control-label" for="description"><?=$form->get('description')->getLabel();?></label>
+                        <div class="col-md-8">
                             <?=$this->formelement($form->get('description')->setAttribute('class', 'form-control')); ?>
                             <span class="help-block">
                             <?=$this->formElementErrors($form->get('description'), [
@@ -68,7 +68,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                     <?=$this->navigationForm(); ?>
                     
            	        <div class="form-group">
-                        <div class="col-sm-offset-4 col-sm-8">
+                        <div class="col-md-offset-4 col-md-8">
                              <label class="radio">
                                 <input type="radio" name="menuInsertType" id="menuInsertType1" value="noInsert" checked >
                                 do not add to menu/no change.
@@ -88,7 +88,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
         </div>
         
         <div class="row">
-                <div class="col-sm-12">
+                <div class="col-md-12">
                 <fieldset>
                     <legend>HTML Content</legend>
                     <?=$this->formElement($form->get('content')->setAttribute('class', 'form-control')); ?>
@@ -103,7 +103,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
         <div class="clearfix">&nbsp;</div>
         
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
+            <div class="col-md-offset-2 col-md-10">
                 <button type="submit" class="btn btn-primary" 
                 data-loading-text="Please wait...">Submit</button>
                 <button type="button" class="btn btn-warning" 
