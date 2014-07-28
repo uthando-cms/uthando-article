@@ -36,11 +36,6 @@ class Article implements ModelInterface
 	protected $description;
 	
 	/**
-	 * @var string
-	 */
-	protected $keywords;
-	
-	/**
 	 * @var int
 	 */
 	protected $pageHits;
@@ -137,23 +132,6 @@ class Article implements ModelInterface
 	public function setDescription($description)
 	{
 		$this->description = $description;
-		return $this;
-	}
-
-	/**
-	 * @return the $keywords
-	 */
-	public function getKeywords()
-	{
-		return $this->keywords;
-	}
-
-	/**
-	 * @param string $keywords
-	 */
-	public function setKeywords($keywords)
-	{
-		$this->keywords = $keywords;
 		return $this;
 	}
 

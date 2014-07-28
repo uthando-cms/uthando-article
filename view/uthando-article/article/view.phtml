@@ -7,9 +7,9 @@ array_pop($splitTitle);
 $title1 = implode(' ', $splitTitle);
 
 // setting page keywords and description
-$this->headMeta()
-	->appendName('keywords', $this->escapehtml($this->page->getKeywords()))
-	->appendName('decription', $this->escapehtml($this->page->getDescription()));
+if ($this->page->getDescription() || $this->page->getDescription() != '') {
+    $this->headMeta()->appendName('decription', $this->escapehtml());
+}
 ?>
 <?php if ($this->page->getSlug() != 'welcome'): ?>
 <div>

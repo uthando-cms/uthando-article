@@ -32,7 +32,6 @@ class Article extends AbstractHydrator
             'slug'          => $object->getSlug(),
             'content'       => $object->getContent(),
             'description'   => $object->getDescription(),
-            'keywords'      => $object->getKeywords(),
             'pageHits'      => $object->getPageHits(),
             'dateCreated'   => $this->extractValue('dateCreated', $object->getDateCreated()),
             'dateModified'  => $this->extractValue('dateModified', $object->getDateModified())

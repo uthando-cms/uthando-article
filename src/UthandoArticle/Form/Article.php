@@ -55,17 +55,6 @@ class Article extends Form
 		]);
 		
 		$this->add([
-		    'name' => 'keywords',
-		    'type' => 'text',
-		    'options' => [
-				'label' => 'Keywords:',
-			],
-			'attributes' => [
-			    'placeholder' => 'Article Keywords:',
-			],
-		]);
-		
-		$this->add([
 		    'name' => 'description',
 		    'type' => 'text',
 		    'options' => [

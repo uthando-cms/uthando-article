@@ -6,7 +6,6 @@ CREATE TABLE IF NOT EXISTS `article` (
   `slug` varchar(255) NOT NULL,
   `content` text NOT NULL,
   `description` text NOT NULL,
-  `keywords` text CHARACTER SET utf32 NOT NULL,
   `pageHits` int(10) unsigned NOT NULL,
   `dateCreated` datetime NOT NULL,
   `dateModified` datetime NOT NULL,
