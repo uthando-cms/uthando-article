@@ -1,6 +1,5 @@
 {
     "name": "uthando-cms/uthando-article",
-    "version" : "1.0",
     "description": "Article module for Uthando CMS",
     "license": "BSD-3-Clause",
     "keywords": [ "framework", "zf2","cms", "uthando", "article"],
