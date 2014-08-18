@@ -1,31 +1,30 @@
 <?php
 return [
-    'userAcl' => [
-        'userRoles' => [
-            'guest' => [
-                'privileges' => [
-                    'allow' => [
-                        ['controller' => 'UthandoArticle\Controller\Article', 'action' => ['view']],
+    'uthando_user' => [
+        'acl' => [
+            'roles' => [
+                'guest' => [
+                    'privileges' => [
+                        'allow' => [
+                            'controllers' => [
+                                'UthandoArticle\Controller\Article' => ['action' => ['view']],
+                            ],
+                        ],
+                    ],
+                ],
+                'admin' => [
+                    'privileges' => [
+                        'allow' => [
+                            'controllers' => [
+                                'UthandoArticle\Controller\Article' => ['action' => 'all'],
+                            ],
+                        ],
                     ],
                 ],
             ],
-            'registered' => [
-                'privileges' => [
-                    'allow' => [
-                        ['controller' => 'UthandoArticle\Controller\Article', 'action' => [ 'view' ]],
-                    ],
-                ],
+            'resources' => [
+                'UthandoArticle\Controller\Article'
             ],
-            'admin' => [
-                'privileges' => [
-                    'allow' => [
-                        ['controller' => 'UthandoArticle\Controller\Article', 'action' => 'all'],
-                    ],
-                ],
-            ],
-        ],
-        'userResources' => [
-            'UthandoArticle\Controller\Article'
         ],
     ],
     'router' => [
