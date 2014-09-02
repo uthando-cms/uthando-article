@@ -76,16 +76,16 @@ class Article extends AbstractService
 	{
 	    if ($post['position'] && $post['menuInsertType'] != 'noInsert') {
 	        $ids = explode('-', $post['position']);
-	        $data = array(
-	                'menuId' => $ids[0],
-	                'label' => $article->getTitle(),
-	                'position' => $ids[1],
-	                'params' => 'slug=' . $article->getSlug(),
-	                'route' => 'article',
-	                'resource' => '',
-	                'visible' => 1,
-	                'menuInsertType' => $post['menuInsertType']
-	        );
+	        $data = [
+                'menuId' => $ids[0],
+                'label' => $article->getTitle(),
+                'position' => $ids[1],
+                'params' => 'slug=' . $article->getSlug(),
+                'route' => 'article',
+                'resource' => '',
+                'visible' => 1,
+                'menuInsertType' => $post['menuInsertType']
+	        ];
 	         
 	        $page = $this->getMenuItemService()->getMenuItemByMenuIdAndLabel($ids[0], $article->getTitle());
 	
