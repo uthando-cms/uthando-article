@@ -3,20 +3,18 @@
 namespace UthandoArticle\Service;
 
 use UthandoArticle\Model\Article as ArticleModel;
-use UthandoCommon\Service\AbstractService;
+use UthandoCommon\Service\AbstractMapperService;
 use UthandoCommon\Model\ModelInterface;
 use Zend\Form\Form;
 
-class Article extends AbstractService
+class Article extends AbstractMapperService
 {	
 	/**
 	 * @var UthandoNavigation\Service\Page
 	 */
 	protected $menuItemService;
 	
-	protected $mapperClass = 'UthandoArticle\Mapper\Article';
-	protected $form = 'UthandoArticle\Form\Article';
-	protected $inputFilter = 'UthandoArticle\InputFilter\Article';
+	protected $serviceAlias = 'UthandoArticle';
 	
 	public function getArticleBySlug($slug)
 	{
