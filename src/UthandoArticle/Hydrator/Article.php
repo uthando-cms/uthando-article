@@ -21,7 +21,7 @@ class Article extends AbstractHydrator
 
     /**
      *
-     * @param \UthandoArticle\Model\Article
+     * @param $object \UthandoArticle\Model\Article
      * @return array
      */
     public function extract($object)

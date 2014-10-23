@@ -10,7 +10,7 @@ use Zend\Form\Form;
 class Article extends AbstractMapperService
 {	
 	/**
-	 * @var UthandoNavigation\Service\Page
+	 * @var \UthandoNavigation\Service\MenuItem
 	 */
 	protected $menuItemService;
 	
@@ -47,13 +47,13 @@ class Article extends AbstractMapperService
 		
 		return $insertId;
 	}
-	
-	/**
-     * @param \UthandoArticle\Model\Article $article
+
+    /**
+     * @param ModelInterface $article
      * @param array $post
-     * @param \UthandoArticle\Form\Article
-     * @return int $result
-	 */
+     * @param Form $form
+     * @return int
+     */
 	public function edit(ModelInterface $article, array $post, Form $form = null)
 	{
 		$article->setDateModified();
@@ -69,7 +69,12 @@ class Article extends AbstractMapperService
 		
 		return $result;
 	}
-	
+
+    /**
+     * @param $article
+     * @param $post
+     * @throws \Exception
+     */
 	protected function updateMenuItem($article, $post)
 	{
 	    if ($post['position'] && $post['menuInsertType'] != 'noInsert') {
