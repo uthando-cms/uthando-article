@@ -19,7 +19,8 @@
 	    "zendframework/zend-form" : "2.*",
 	    "zendframework/zend-inputfilter" : "2.*",
 	    "uthando-cms/uthando-common" : "1.*",
-	    "uthando-cms/uthando-admin" : "1.*"
+	    "uthando-cms/uthando-admin" : "1.*",
+        "uthando-cms/uthando-file-manager": "1.*"
     },
     "require-dev" : {
     	"zendframework/zendframework" : "2.*"
