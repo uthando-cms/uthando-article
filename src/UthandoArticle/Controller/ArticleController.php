@@ -16,7 +16,7 @@ class ArticleController extends AbstractCrudController
         $slug = $this->params()->fromRoute('slug');
         $page = $this->getService()->getArticleBySlug($slug);
         
-        if (! $page) {
+        if (!$page) {
             $model = new ViewModel();
             $model->setTemplate('article/article/404');
             return $model;

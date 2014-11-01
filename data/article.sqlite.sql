@@ -4,6 +4,7 @@ CREATE TABLE article (
   title varchar(255) NOT NULL,
   slug varchar(255) NOT NULL,
   content text NOT NULL,
+  lead text NOT NULL,
   description text NOT NULL,
   pageHits integer(128) NOT NULL,
   dateCreated text(128) NOT NULL,

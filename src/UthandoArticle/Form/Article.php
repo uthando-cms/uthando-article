@@ -39,6 +39,20 @@ class Article extends Form
 		        'placeholder' => 'Slug:',
 		    ],
 		]);
+
+        $this->add([
+            'name' => 'lead',
+            'type' => 'textarea',
+            'options' => [
+                'label' => 'Lead Text:'
+            ],
+            'attributes' => [
+                'placeholder' => 'Lead Text:',
+                'class'       => 'editable-textarea form-control',
+                'id'          => 'article-lead-textarea',
+                'rows'        => 10,
+            ],
+        ]);
 		
 		$this->add([
 		    'name' => 'content',
@@ -48,7 +62,7 @@ class Article extends Form
 		    ],
 		    'attributes' => [
 		        'placeholder' => 'HTML Content:',
-		        'class'       => 'editable-textarea',
+		        'class'       => 'editable-textarea form-control',
 		    	'id'          => 'article-content-textarea',
                 'rows'        => 25,
 		    ],
