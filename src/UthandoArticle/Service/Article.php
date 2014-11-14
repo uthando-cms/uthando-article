@@ -83,7 +83,7 @@ class Article extends AbstractMapperService
                 'menuId' => $ids[0],
                 'label' => $article->getTitle(),
                 'position' => $ids[1],
-                'params' => 'slug=' . $article->getSlug(),
+                'params' => 'params.slug=' . $article->getSlug(),
                 'route' => 'article',
                 'resource' => '',
                 'visible' => 1,

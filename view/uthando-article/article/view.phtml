@@ -8,7 +8,7 @@ $title1 = implode(' ', $splitTitle);
 
 // setting page keywords and description
 if ($this->page->getDescription() || $this->page->getDescription() != '') {
-    $this->headMeta()->appendName('decription', $this->escapehtml());
+    $this->headMeta()->appendName('description', $this->escapehtml($this->page->getDescription()));
 }
 ?>
 <?php if ($this->page->getSlug() != 'welcome'): ?>
