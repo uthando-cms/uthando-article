@@ -46,7 +46,7 @@ class Article implements ModelInterface
 	/**
 	 * @var int
 	 */
-	protected $pageHits;
+	protected $pageHits = 0;
 
     /**
      * @return int
