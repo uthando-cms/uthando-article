@@ -24,6 +24,7 @@ class Article extends Form
 			],
 			'attributes' => [
 			    'placeholder' => 'Article Title:',
+                'class' => 'form-control',
 			],
 		]);
 		
@@ -33,10 +34,11 @@ class Article extends Form
 		    'options' => [
 		        'label'       => 'Slug:',
 		        'required'    => false,
-		    	'help-inline' => 'If you leave this blank the the title will be used for the slug.'
+		    	'inline-help' => 'If you leave this blank the the title will be used for the slug.'
 		    ],
 		    'attributes' => [
 		        'placeholder' => 'Slug:',
+                'class' => 'form-control',
 		    ],
 		]);
 
@@ -76,6 +78,7 @@ class Article extends Form
 			],
 			'attributes' => [
 			    'placeholder' => 'Description:',
+                'class' => 'form-control',
 			],
 		]);
 		
