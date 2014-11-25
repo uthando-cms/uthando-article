@@ -30,7 +30,6 @@ class Article extends AbstractHydrator
             'articleId'     => $object->getArticleId(),
             'title'         => $object->getTitle(),
             'slug'          => $object->getSlug(),
-            'lead'          => $object->getLead(),
             'content'       => $object->getContent(),
             'description'   => $object->getDescription(),
             'pageHits'      => $object->getPageHits(),

@@ -27,11 +27,6 @@ class Article implements ModelInterface
 	 * @var string
 	 */
 	protected $slug;
-
-    /**
-     * @var string
-     */
-    protected $lead;
 	
 	/**
 	 * @var string
@@ -101,24 +96,6 @@ class Article implements ModelInterface
 		$this->slug = $slug;
 		return $this;
 	}
-
-    /**
-     * @return string
-     */
-    public function getLead()
-    {
-        return $this->lead;
-    }
-
-    /**
-     * @param $lead
-     * @return $this
-     */
-    public function setLead($lead)
-    {
-        $this->lead = $lead;
-        return $this;
-    }
 
     /**
      * @return string

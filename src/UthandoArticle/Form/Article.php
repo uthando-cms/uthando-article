@@ -41,20 +41,6 @@ class Article extends Form
                 'class' => 'form-control',
 		    ],
 		]);
-
-        $this->add([
-            'name' => 'lead',
-            'type' => 'textarea',
-            'options' => [
-                'label' => 'Lead Text:'
-            ],
-            'attributes' => [
-                'placeholder' => 'Lead Text:',
-                'class'       => 'editable-textarea form-control',
-                'id'          => 'article-lead-textarea',
-                'rows'        => 10,
-            ],
-        ]);
 		
 		$this->add([
 		    'name' => 'content',
