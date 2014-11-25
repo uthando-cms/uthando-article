@@ -81,15 +81,6 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                 </fieldset>
            	</div>
         </div>
-
-        <div class="row">
-            <div class="col-md-12">
-                <fieldset>
-                    <legend>Lead Text</legend>
-                    <?=$this->formElement($form->get('lead')); ?>
-                </fieldset>
-            </div>
-        </div>
         
         <div class="row">
                 <div class="col-md-12">
@@ -122,23 +113,6 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#article-lead-textarea').liveEdit({
-            height : '100px',
-            css: [
-                'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css',
-                'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css',
-                'http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css'
-            ] /* Apply bootstrap css into the editing area */ ,
-            groups: [
-                ["group1", "", ["Bold", "Italic", "Underline", "ForeColor", "RemoveFormat"]],
-                ["group2", "", ["Bullets", "Numbering", "Indent", "Outdent"]],
-                ["group3", "", ["Paragraph", "FontSize", "FontDialog", "TextDialog"]],
-                ["group4", "", ["LinkDialog", "ImageDialog", "TableDialog", "Emoticons", "Snippets"]],
-                ["group5", "", ["Undo", "Redo", "FullScreen", "SourceDialog"]]
-            ] /* Toolbar configuration */ ,
-            fileBrowser: '<?=$this->basePath('/admin/asset-manager')?>'
-        });
-        $('#article-lead-textarea').data('liveEdit').startedit(); /* Run the Editor */
         $('#article-content-textarea').liveEdit({
             css: [
                 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css',
