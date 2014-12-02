@@ -1,5 +1,10 @@
 <?php $this->headTitle('Edit Article') ?>
 
+<a href="<?=$this->url('article', [
+    'slug' => $model->getSlug(),
+]); ?>" class="btn btn-primary">Live Edit</a>
+&nbsp;
+
 <?=$this->partial('uthando-article/article/article-form', [
 	'form' => $this->form,
 	'formAction' => 'edit',

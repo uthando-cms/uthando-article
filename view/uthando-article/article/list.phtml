@@ -15,6 +15,7 @@
     		</tr>
     	</thead>
     	<tbody>
+            <?php /* @var $row \UthandoArticle\Model\Article */ ?>
     		<?php foreach($this->models as $row): ?>
     		<tr>
     			<td><?=$this->escapeHtml($row->getArticleId()); ?></td>
@@ -24,6 +25,10 @@
     			<td><?=$this->escapeHtml($this->formatDate($row->getDateCreated())); ?></td>
     			<td><?=$this->escapeHtml($this->formatDate($row->getDateModified())); ?></td>
     			<td>
+                    <a href="<?=$this->url('article', [
+                        'slug' => $row->getSlug(),
+                    ]); ?>" class="btn btn-primary">Live Edit</a>
+                    &nbsp;
     				<?=$this->partial('uthando-admin/partial/edit-actions', [
                     	'pk'		=> 'articleId',
                     	'id'		=> $row->getArticleId(),
