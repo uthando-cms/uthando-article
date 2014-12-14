@@ -3,23 +3,53 @@
 namespace UthandoArticle\Service;
 
 use UthandoArticle\Model\Article as ArticleModel;
-use UthandoCommon\Service\AbstractMapperService;
 use UthandoCommon\Model\ModelInterface;
+use UthandoCommon\Service\AbstractRelationalMapperService;
 use Zend\Form\Form;
 
-class Article extends AbstractMapperService
+class Article extends AbstractRelationalMapperService
 {	
 	/**
 	 * @var \UthandoNavigation\Service\MenuItem
 	 */
 	protected $menuItemService;
-	
+
+    /**
+     * @var string
+     */
 	protected $serviceAlias = 'UthandoArticle';
+
+    /**
+     * @var array
+     */
+    protected $referenceMap = [
+        'user'  => [
+            'refCol'    => 'userId',
+            'service'   => 'UthandoUser\Service\User',
+        ],
+    ];
+
+    /**
+     * @param int $id
+     * @param null $col
+     * @return array|mixed|\UthandoCommon\Model\ModelInterface
+     */
+    public function getById($id, $col = null)
+    {
+        $article = parent::getById($id, $col);
+        $this->populate($article, true);
+
+        return $article;
+    }
 	
 	public function getArticleBySlug($slug)
 	{
 		$slug = (string) $slug;
-		return $this->getMapper()->getArticleBySlug($slug);
+        $article = $this->getMapper()->getArticleBySlug($slug);
+
+        $this->populate($article, true);
+
+        return $article;
 	}
 	
 	public function addPageHit(ArticleModel $article)
@@ -38,7 +68,7 @@ class Article extends AbstractMapperService
 		
 		$insertId = parent::add($post);
 		
-		if ($insertId) {
+		if (!$insertId instanceof Form) {
     		$pageResult = $this->updateMenuItem(
     		    $this->getById($insertId),
     		    $post
@@ -61,7 +91,7 @@ class Article extends AbstractMapperService
 		
 		// find page first, if exists delete it before updating.
 		
-		if ($result) {
+		if (!$result instanceof Form) {
 		    $pageResult = $this->updateMenuItem(
 		        $this->getById($article->getArticleId()), $post
 	        );

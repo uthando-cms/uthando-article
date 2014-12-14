@@ -15,6 +15,10 @@ class ArticleController extends AbstractCrudController
     {
         $slug = $this->params()->fromRoute('slug');
         $page = $this->getService()->getArticleBySlug($slug);
+
+        if (!$this->isAllowed($page->getResource())) {
+            throw new \Exception('Not allowed!');
+        }
         
         if (!$page) {
             $model = new ViewModel();

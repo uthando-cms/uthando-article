@@ -1,6 +1,7 @@
 
 CREATE TABLE article (
   articleId integer PRIMARY KEY AUTOINCREMENT NOT NULL,
+  userId integer NOT NULL,
   title varchar(255) NOT NULL,
   slug varchar(255) NOT NULL,
   content text NOT NULL,
@@ -10,4 +11,5 @@ CREATE TABLE article (
   dateModified text(128) NOT NULL
 );
 CREATE UNIQUE INDEX slug ON article (slug ASC);
+CREATE INDEX userId ON article (userId ASC);
 CREATE UNIQUE INDEX articleId ON article (articleId ASC);

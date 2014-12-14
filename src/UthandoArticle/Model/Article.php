@@ -6,10 +6,14 @@ use UthandoCommon\Model\DateCreatedTrait;
 use UthandoCommon\Model\DateModifiedTrait;
 use UthandoCommon\Model\Model;
 use UthandoCommon\Model\ModelInterface;
+use UthandoUser\Model\ResourceTrait;
+use UthandoUser\Model\UserTrait;
 
 class Article implements ModelInterface
 {
     use Model,
+        UserTrait,
+        ResourceTrait,
         DateCreatedTrait,
         DateModifiedTrait;
     

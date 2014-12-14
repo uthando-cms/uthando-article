@@ -9,6 +9,14 @@ return [
                             'controllers' => [
                                 'UthandoArticle\Controller\Article' => ['action' => ['view']],
                             ],
+                            'resources' => ['article:guest'],
+                        ],
+                    ],
+                ],
+                'registered' => [
+                    'privileges' => [
+                        'allow' => [
+                            'resources' => ['article:user'],
                         ],
                     ],
                 ],
@@ -18,12 +26,16 @@ return [
                             'controllers' => [
                                 'UthandoArticle\Controller\Article' => ['action' => 'all'],
                             ],
+                            'resources' => ['article:admin'],
                         ],
                     ],
                 ],
             ],
             'resources' => [
-                'UthandoArticle\Controller\Article'
+                'UthandoArticle\Controller\Article',
+                'article:guest',
+                'article:user',
+                'article:admin',
             ],
         ],
     ],

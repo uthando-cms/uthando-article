@@ -2,6 +2,12 @@
 $form = $this->form;
 $routeArray = array('action' => $this->formAction);
 if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
+
+if (!$form->get('userId')->getValue()) {
+    $userId = $this->identity()->getUserId();
+    $form->get('userId')->setValue($userId);
+}
+
 ?>
 <?=$this->headScript()
     ->appendFile($this->themePath('/assets/js/LiveEditor/scripts/innovaeditor.js'))
@@ -21,7 +27,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                     <div class="form-group<?php if ($form->get('title')->getMessages()) echo ' has-error'; ?>">
                         <label class="col-md-4 control-label" for="title"><?=$form->get('title')->getLabel();?></label>
                         <div class="col-md-8">
-                            <?=$this->formelement($form->get('title')->setAttribute('class', 'form-control')); ?>
+                            <?=$this->formText($form->get('title')); ?>
                             <span class="help-block">
                                 <?=$this->formElementErrors($form->get('title'), [
                                     'class' => 'list-unstyled'
@@ -33,7 +39,7 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                      <div class="form-group<?php if ($form->get('slug')->getMessages()) echo ' has-error'; ?>">
                         <label class="col-md-4 control-label" for="slug"><?=$form->get('slug')->getLabel();?></label>
                         <div class="col-md-8">
-                            <?=$this->formelement($form->get('slug')->setAttribute('class', 'form-control')); ?>
+                            <?=$this->formText($form->get('slug')); ?>
                             <span class="help-block">
                             <?=$this->formElementErrors($form->get('slug'), [
                                 'class' => 'list-unstyled'
@@ -45,9 +51,21 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                      <div class="form-group<?php if ($form->get('description')->getMessages()) echo ' has-error'; ?>">
                         <label class="col-md-4 control-label" for="description"><?=$form->get('description')->getLabel();?></label>
                         <div class="col-md-8">
-                            <?=$this->formelement($form->get('description')->setAttribute('class', 'form-control')); ?>
+                            <?=$this->formText($form->get('description')); ?>
                             <span class="help-block">
                             <?=$this->formElementErrors($form->get('description'), [
+                                'class' => 'list-unstyled'
+                            ]); ?>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-group<?php if ($form->get('resource')->getMessages()) echo ' has-error'; ?>">
+                        <label class="col-md-4 control-label" for="resource"><?=$form->get('resource')->getLabel();?></label>
+                        <div class="col-md-8">
+                            <?=$this->formSelect($form->get('resource')); ?>
+                            <span class="help-block">
+                            <?=$this->formElementErrors($form->get('resource'), [
                                 'class' => 'list-unstyled'
                             ]); ?>
                             </span>
@@ -86,14 +104,14 @@ if (isset($this->articleId)) $routeArray['id'] = $this->articleId;
                 <div class="col-md-12">
                 <fieldset>
                     <legend>HTML Content</legend>
-                    <?=$this->formElement($form->get('content')); ?>
+                    <?=$this->formTextarea($form->get('content')); ?>
                 </fieldset>
             </div>
         </div>
                 
         <?=$this->formElement($form->get('articleId')); ?>
-        <?=$this->formElement($form->get('pageHits')); ?>
-        <input type="hidden" name="action" value="<?=$this->formAction; ?>">
+        <?=$this->formElement($form->get('userId')); ?>
+        <input type="hidden" name="action" value="<?=$this->formAction;?>">
         
         <div class="clearfix">&nbsp;</div>
         
