@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `article` (
   PRIMARY KEY (`articleId`),
   UNIQUE KEY `slug` (`slug`),
   KEY `userId` (`userId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables

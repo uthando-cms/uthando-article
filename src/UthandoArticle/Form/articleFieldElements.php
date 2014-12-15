@@ -54,6 +54,10 @@ return [
     ],
     'pageHits' => [
         'type' => 'hidden',
+        'attributes' => [
+            'value' => 0,
+        ],
+
     ],
     'resource' => [
         'type' => 'UthandoArticleResourceList',
@@ -63,6 +67,7 @@ return [
         ],
         'attributes' => [
             'class' => 'form-control',
+            'value' => 'article:guest',
         ],
     ],
     'dateCreated' => [
