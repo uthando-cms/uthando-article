@@ -38,6 +38,11 @@ class Module
     {
         return include __DIR__ . '/config/mapper.config.php';
     }
+    
+    public function getViewHelperConfig()
+    {
+        return include __DIR__ . '/config/viewHelper.config.php';
+    }
 
     public function getUthandoModelConfig()
     {

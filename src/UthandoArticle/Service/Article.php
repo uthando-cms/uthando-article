@@ -99,6 +99,18 @@ class Article extends AbstractRelationalMapperService
 		
 		return $result;
 	}
+	
+	/**
+	 * @param int $limit
+	 * @return Ambigous <\Zend\Db\ResultSet\HydratingResultSet, \Zend\Db\ResultSet\ResultSet, \Zend\Paginator\Paginator>
+	 */
+	public function getRecentPosts($limit)
+	{
+	    $limit = (int) $limit;
+	    /* @var $mapper \UthandoArticle\Mapper\Article */
+	    $mapper = $this->getMapper();
+	    return $mapper->getArticlesByDate($limit);
+	}
 
     /**
      * @param $article
