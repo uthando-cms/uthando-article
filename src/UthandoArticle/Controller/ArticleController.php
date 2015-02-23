@@ -7,7 +7,7 @@ use Zend\View\Model\ViewModel;
 
 class ArticleController extends AbstractCrudController
 {
-    protected $searchDefaultParams = array('sort' => 'articleId');
+    protected $controllerSearchOverrides = array('sort' => 'articleId');
     protected $serviceName = 'UthandoArticle\Service\Article';
     protected $route = 'admin/article';
     
