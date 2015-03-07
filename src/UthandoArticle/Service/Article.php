@@ -25,7 +25,7 @@ class Article extends AbstractRelationalMapperService
     protected $referenceMap = [
         'user'  => [
             'refCol'    => 'userId',
-            'service'   => 'UthandoUser\Service\User',
+            'service'   => 'UthandoUser',
         ],
     ];
 

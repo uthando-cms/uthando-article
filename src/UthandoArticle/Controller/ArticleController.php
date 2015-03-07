@@ -8,7 +8,7 @@ use Zend\View\Model\ViewModel;
 class ArticleController extends AbstractCrudController
 {
     protected $controllerSearchOverrides = array('sort' => 'articleId');
-    protected $serviceName = 'UthandoArticle\Service\Article';
+    protected $serviceName = 'UthandoArticle';
     protected $route = 'admin/article';
     
     public function viewAction()

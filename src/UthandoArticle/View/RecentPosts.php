@@ -11,10 +11,10 @@ class RecentPosts extends AbstractViewHelper
         $service = $this->getServiceLocator()
             ->getServiceLocator()
             ->get('UthandoServiceManager')
-            ->get('UthandoArticle\Service\Article');
-
+             ->get('UthandoArticle');
+        
         $models = $service->getRecentPosts($number);
-
+        
         return $models;
     }
 }

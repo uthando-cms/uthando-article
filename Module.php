@@ -28,11 +28,6 @@ class Module
     {
         return include __DIR__ . '/config/inputFilter.config.php';
     }
-    
-    public function getServiceConfig()
-    {
-        return include __DIR__ . '/config/service.config.php';
-    }
 
     public function getUthandoMapperConfig()
     {
@@ -47,6 +42,11 @@ class Module
     public function getUthandoModelConfig()
     {
         return include __DIR__ . '/config/model.config.php';
+    }
+    
+    public function getUthandoServiceConfig()
+    {
+        return include __DIR__ . '/config/uthandoServices.config.php';
     }
 
     public function getAutoloaderConfig()
