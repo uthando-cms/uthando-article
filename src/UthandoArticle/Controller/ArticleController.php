@@ -13,6 +13,12 @@ class ArticleController extends AbstractCrudController
     
     public function viewAction()
     {
+        $viewModel = new ViewModel();
+        
+        if ($this->getRequest()->isXmlHttpRequest()) {
+            $viewModel->setTerminal(true);
+        }
+        
         $slug = $this->params()->fromRoute('slug');
         $page = $this->getService()->getArticleBySlug($slug);
 
@@ -21,13 +27,16 @@ class ArticleController extends AbstractCrudController
         }
         
         if (!$page) {
-            $model = new ViewModel();
-            $model->setTemplate('article/article/404');
-            return $model;
+            $viewModel->setTemplate('uthando-article/article/404');
+            return $viewModel;
         }
         
         $this->getService()->addPageHit($page);
         
-        return ['page' => $page];
+        if ($this->params('model') == true) {
+            $viewModel->setTemplate('uthando-article/article/model');
+        }
+        
+        return $viewModel->setVariables(['page' => $page]);
     }
 }

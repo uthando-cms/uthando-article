@@ -7,5 +7,6 @@ return [
     'uthando-article/article/edit'          => __DIR__ . '/view/uthando-article/article/edit.phtml',
     'uthando-article/article/index'         => __DIR__ . '/view/uthando-article/article/index.phtml',
     'uthando-article/article/list'          => __DIR__ . '/view/uthando-article/article/list.phtml',
+    'uthando-article/article/model'         => __DIR__ . '/view/uthando-article/article/model.phtml',
     'uthando-article/article/view'          => __DIR__ . '/view/uthando-article/article/view.phtml',
 ];

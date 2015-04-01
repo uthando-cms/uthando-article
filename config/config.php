@@ -44,15 +44,16 @@ return [
             'article' => [
                 'type' => 'Segment',
                 'options' => [
-                    'route' => '/page/[:slug]',
+                    'route' => '/page/[:slug][/:model]',
                     'constraints' => [
-                        'slug'  => '[a-zA-Z][a-zA-Z0-9_-]*'
+                        'slug'  => '[a-zA-Z][a-zA-Z0-9_-]*',
                     ],
                     'defaults' => [
                         '__NAMESPACE__' => 'UthandoArticle\Controller',
                         'controller'    => 'Article',
                         'action'        => 'view',
-                        'force-ssl'     => 'http'
+                        'force-ssl'     => 'http',
+                        'model'         => false,
                     ],
                 ],
             ],
