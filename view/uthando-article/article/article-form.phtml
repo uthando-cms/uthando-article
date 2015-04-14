@@ -10,10 +10,11 @@ if (!$form->get('userId')->getValue()) {
 
 ?>
 <?=$this->headScript()
-    ->appendFile($this->themePath('/assets/js/LiveEditor/scripts/innovaeditor.js'))
-    ->appendFile($this->themePath('/assets/js/LiveEditor/scripts/jquery.innovaeditor.js'))
-    ->appendFile('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js')
-    ->appendFile($this->themePath('/assets/js/LiveEditor/scripts/common/webfont.js'))
+    ->appendFile($this->themePath('/assets/js/tinymce/tinymce.min.js'))
+    //->appendFile($this->themePath('/assets/js/LiveEditor/scripts/innovaeditor.js'))
+    //->appendFile($this->themePath('/assets/js/LiveEditor/scripts/jquery.innovaeditor.js'))
+    //->appendFile('//ajax.googleapis.com/ajax/libs/webfont/1/webfont.js')
+    //->appendFile($this->themePath('/assets/js/LiveEditor/scripts/common/webfont.js'))
 ;
 ?>
 <div class="row">
@@ -131,22 +132,43 @@ if (!$form->get('userId')->getValue()) {
 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#article-content-textarea').liveEdit({
+    	tinymce.init({
+        	selector:'textarea',
+        	plugins: [
+                "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+                "searchreplace wordcount visualblocks visualchars code fullscreen",
+                "insertdatetime media nonbreaking save table contextmenu directionality",
+                "emoticons template paste textcolor colorpicker textpattern bootstrap"
+            ],
+            toolbar1: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+            toolbar2: "bootstrap print preview media | forecolor backcolor emoticons",
+            image_advtab: true,
+
+            bootstrapConfig: {
+                'imagesPath': '<?=$this->basePath('/userfiles');?>/' // replace with your images folder path
+            },
+
+            //external_filemanager_path:"<?=$this->basePath('/filemanager');?>/",
+            //filemanager_title:"Responsive Filemanager" ,
+            //external_plugins: { "filemanager" : "<?=$this->basePath('/filemanager/plugin.min.js');?>"}
+            
+    	});
+        /*$('#article-content-textarea').liveEdit({
             css: [
                 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css',
                 'http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css',
                 'http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.css'
-            ] /* Apply bootstrap css into the editing area */ ,
+            ],
             groups: [
                 ["group1", "", ["Bold", "Italic", "Underline", "ForeColor", "RemoveFormat"]],
                 ["group2", "", ["Bullets", "Numbering", "Indent", "Outdent"]],
                 ["group3", "", ["Paragraph", "FontSize", "FontDialog", "TextDialog"]],
                 ["group4", "", ["LinkDialog", "ImageDialog", "TableDialog", "Emoticons", "Snippets"]],
                 ["group5", "", ["Undo", "Redo", "FullScreen", "SourceDialog"]]
-            ] /* Toolbar configuration */ ,
+            ],
             fileBrowser: '<?=$this->basePath('/admin/asset-manager')?>'
         });
-        $('#article-content-textarea').data('liveEdit').startedit(); /* Run the Editor */
+        $('#article-content-textarea').data('liveEdit').startedit();*/
     });
 </script>
 
