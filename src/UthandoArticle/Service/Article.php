@@ -149,7 +149,7 @@ class Article extends AbstractRelationalMapperService
 	{
 	    if (!$this->menuItemService) {
 			$sl = $this->getServiceLocator();
-			$this->menuItemService = $sl->get('UthandoNavigation\Service\MenuItem');
+			$this->menuItemService = $sl->get('UthandoNavigationMenuItem');
 		}
 		
 		return $this->menuItemService;
