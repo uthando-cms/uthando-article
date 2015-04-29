@@ -11,5 +11,6 @@ return array(
     'UthandoArticle\Mapper\Article'               => __DIR__ . '/src/UthandoArticle/Mapper/Article.php',
     'UthandoArticle\Model\Article'                => __DIR__ . '/src/UthandoArticle/Model/Article.php',
     'UthandoArticle\Service\Article'              => __DIR__ . '/src/UthandoArticle/Service/Article.php',
+    'UthandoArticle\View\GetPost'                 => __DIR__ . '/src/UthandoArticle/View/GetPost.php',
     'UthandoArticle\View\RecentPosts'             => __DIR__ . '/src/UthandoArticle/View/RecentPosts.php',
 );

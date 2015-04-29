@@ -2,6 +2,7 @@
 
 return [
     'invokables' => [
-        'UthandoArticleRecentPosts'    => 'UthandoArticle\View\RecentPosts',
+        'UthandoArticleGetPost'         => 'UthandoArticle\View\GetPost',
+        'UthandoArticleRecentPosts'     => 'UthandoArticle\View\RecentPosts',
     ],
 ];
