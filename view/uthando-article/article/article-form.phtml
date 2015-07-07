@@ -9,9 +9,8 @@ if (!$form->get('userId')->getValue()) {
 }
 
 ?>
-<?=$this->headScript()
-    ->appendFile($this->basePath('js/tinymce/tinymce.min.js'))
-;
+<?=$this->inlineScript()
+    ->appendFile('//tinymce.cachefly.net/4.2/tinymce.min.js');
 ?>
 <div class="row">
     <form class="col-md-12 form form-horizontal" method="post" action="<?=$this->url('admin/article/edit', $routeArray) ?>">
@@ -134,7 +133,7 @@ if (!$form->get('userId')->getValue()) {
                 "advlist autolink lists link image charmap print preview hr anchor pagebreak",
                 "searchreplace wordcount visualblocks visualchars code fullscreen",
                 "insertdatetime media nonbreaking save table contextmenu directionality",
-                "emoticons template paste textcolor colorpicker textpattern bootstrap"
+                "emoticons template paste textcolor colorpicker textpattern"
             ],
             toolbar1: "insertfile undo redo | styleselect | fontsizeselect bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
             toolbar2: "bootstrap print preview media | forecolor backcolor emoticons",
@@ -143,6 +142,11 @@ if (!$form->get('userId')->getValue()) {
             bootstrapConfig: {
                 'imagesPath': '<?=$this->basePath('/userfiles');?>/' // replace with your images folder path
             },
+
+            external_plugins: {
+                "bootstrap": "<?=$this->basePath('/js/tinymce/plugins/bootstrap/plugin.js');?>"
+            }
+
 
             //external_filemanager_path:"<?=$this->basePath('/filemanager');?>/",
             //filemanager_title:"Responsive Filemanager" ,
