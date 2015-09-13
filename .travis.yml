@@ -10,6 +10,7 @@ before_script:
   - git clone git://github.com/uthando-cms/uthando-common.git
   - git clone git://github.com/uthando-cms/uthando-admin.git
   - git clone git://github.com/uthando-cms/uthando-navigation.git
+  - git clone git://github.com/uthando-cms/uthando-theme-manager.git
   - git clone git://github.com/uthando-cms/uthando-file-manager.git
   - git clone git://github.com/uthando-cms/uthando-user.git
   - cd uthando
@@ -18,6 +19,7 @@ before_script:
   - cp -R ../uthando-common ./module/UthandoCommon
   - cp -R ../uthando-admin ./module/UthandoAdmin
   - cp -R ../uthando-admin ./module/UthandoNavigation
+  - cp -R ../uthando-theme-manager ./module/UthandoThemeManger
   - cp -R ../uthando-file-manager ./module/UthandoFileManager
   - cp -R ../uthando-user ./module/UthandoUser
   - cd module/UthandoArticle/test
