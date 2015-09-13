@@ -19,7 +19,7 @@ before_script:
   - cp -R ../uthando-common ./module/UthandoCommon
   - cp -R ../uthando-admin ./module/UthandoAdmin
   - cp -R ../uthando-admin ./module/UthandoNavigation
-  - cp -R ../uthando-theme-manager ./module/UthandoThemeManger
+  - cp -R ../uthando-theme-manager ./module/UthandoThemeManager
   - cp -R ../uthando-file-manager ./module/UthandoFileManager
   - cp -R ../uthando-user ./module/UthandoUser
   - cd module/UthandoArticle/test
