@@ -1,0 +1,30 @@
+language: php
+
+php:
+  - 5.5
+  - 5.6
+
+before_script:
+  - cd ..
+  - git clone git://github.com/uthando-cms/uthando.git
+  - git clone git://github.com/uthando-cms/uthando-common.git
+  - git clone git://github.com/uthando-cms/uthando-admin.git
+  - git clone git://github.com/uthando-cms/uthando-navigation.git
+  - git clone git://github.com/uthando-cms/uthando-file-manager.git
+  - git clone git://github.com/uthando-cms/uthando-user.git
+  - cd uthando
+  - composer install
+  - cp -R ../uthando-article ./module/UthandoArticle
+  - cp -R ../uthando-common ./module/UthandoCommon
+  - cp -R ../uthando-admin ./module/UthandoAdmin
+  - cp -R ../uthando-admin ./module/UthandoNavigation
+  - cp -R ../uthando-file-manager ./module/UthandoFileManager
+  - cp -R ../uthando-user ./module/UthandoUser
+  - cd module/UthandoArticle/test
+
+script:
+  - phpunit
+
+after_script:
+  - cd ../../../
+  - php vendor/bin/test-reporter --coverage-report=build/logs/clover-UthandoArticle.xml
