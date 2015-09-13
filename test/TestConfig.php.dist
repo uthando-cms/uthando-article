@@ -3,11 +3,7 @@ return [
     'modules' => [
         'Application',
         'UthandoArticle',
-        'UthandoAdmin',
         'UthandoCommon',
-        'UthandoThemeManager',
-        'UthandoNavigation',
-        'UthandoFileManager',
         'UthandoUser',
     ],
     'module_listener_options' => [
