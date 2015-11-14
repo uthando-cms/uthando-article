@@ -2,8 +2,8 @@
 return [
     'modules' => [
         'Application',
-        'UthandoArticle',
         'UthandoCommon',
+        'UthandoArticle',
         'UthandoUser',
     ],
     'module_listener_options' => [
