@@ -10,17 +10,17 @@ return [
                         'label'     => 'List All Articles',
                         'action'    => 'list',
                         'route'     => 'admin/article',
-                        'resource'  => 'menu:user'
+                        'resource'  => 'menu:admin'
                     ],
                     'add' => [
                         'label'     => 'Add New Article',
                         'action'    => 'add',
                         'route'     => 'admin/article/edit',
-                        'resource'  => 'menu:user'
+                        'resource'  => 'menu:admin'
                     ],
                 ],
                 'route' => 'admin/article',
-                'resource' => 'menu:user'
+                'resource' => 'menu:admin'
             ],
         ],
     ],
