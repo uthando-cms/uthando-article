@@ -5,6 +5,9 @@ return [
         'admin' => [
             'article' => [
                 'label' => 'Article',
+                'params' => [
+                    'icon' => 'fa-file-text-o',
+                ],
                 'pages' => [
                     'list' => [
                         'label'     => 'List All Articles',
