@@ -13,6 +13,7 @@ namespace UthandoArticle\Service;
 use UthandoArticle\Model\Article as ArticleModel;
 use UthandoCommon\Model\ModelInterface;
 use UthandoCommon\Service\AbstractRelationalMapperService;
+use Zend\EventManager\Event;
 use Zend\Form\Form;
 
 /**
@@ -41,6 +42,25 @@ class Article extends AbstractRelationalMapperService
             'service' => 'UthandoUser',
         ],
     ];
+
+    /**
+     * (non-PHPdoc)
+     * @see \UthandoCommon\Service\AbstractService::attachEvents()
+     */
+    public function attachEvents()
+    {
+        $this->getEventManager()->attach([
+            'pre.add', 'pre.edit'
+        ], [$this, 'setValidation']);
+    }
+
+    public function setValidation(Event $e)
+    {
+        $form = $e->getParam('form');
+        $form->setValidationGroup([
+            'articleId', 'userId', 'title', 'slug', 'content', 'description', 'resource',
+        ]);
+    }
 
     /**
      * @param int $id
@@ -116,8 +136,8 @@ class Article extends AbstractRelationalMapperService
     }
 
     /**
-     * @param int $limit
-     * @return Ambigous <\Zend\Db\ResultSet\HydratingResultSet, \Zend\Db\ResultSet\ResultSet, \Zend\Paginator\Paginator>
+     * @param $limit
+     * @return \Zend\Db\ResultSet\HydratingResultSet|\Zend\Db\ResultSet\ResultSet|\Zend\Paginator\Paginator
      */
     public function getRecentPosts($limit)
     {

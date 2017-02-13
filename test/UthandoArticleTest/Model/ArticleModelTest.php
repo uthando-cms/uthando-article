@@ -31,4 +31,34 @@ class ArticleModelTest extends TestCase
         $this->model->setArticleId(1);
         $this->assertSame(1, $this->model->getArticleId());
     }
+
+    public function testSetGetTitle()
+    {
+        $this->model->setTitle('This is a title');
+        $this->assertSame('This is a title', $this->model->getTitle());
+    }
+
+    public function testSetGetSlug()
+    {
+        $this->model->setSlug('this-is-a-slug');
+        $this->assertSame('this-is-a-slug', $this->model->getSlug());
+    }
+
+    public function testSetGetContent()
+    {
+        $this->model->setContent('some content');
+        $this->assertSame('some content', $this->model->getContent());
+    }
+
+    public function testSetGetDescription()
+    {
+        $this->model->setDescription('this is a description');
+        $this->assertSame('this is a description', $this->model->getDescription());
+    }
+
+    public function testSetGetPageHits()
+    {
+        $this->model->setPageHits(54);
+        $this->assertSame(54, $this->model->getPageHits());
+    }
 }

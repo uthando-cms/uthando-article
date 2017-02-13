@@ -2,46 +2,45 @@
 return [
     'controllers' => [
         'invokables' => [
-            'UthandoArticle\Controller\Article' => 'UthandoArticle\Controller\ArticleController',
+            'UthandoArticle\Controller\Article' => \UthandoArticle\Mvc\Controller\ArticleController::class,
         ],
     ],
     'form_elements' => [
         'invokables' => [
-            'UthandoArticle'                => 'UthandoArticle\Form\Article',
-            'UthandoArticleFieldSet'        => 'UthandoArticle\Form\ArticleFieldSet',
+            'UthandoArticle'                => \UthandoArticle\Form\Article::class,
 
-            'UthandoArticleResourceList'    => 'UthandoArticle\Form\Element\ResourceList',
+            'UthandoArticleResourceList'    => UthandoArticle\Form\Element\ResourceList::class,
         ],
     ],
     'hydrators' => [
         'invokables' => [
-            'UthandoArticle' => 'UthandoArticle\Hydrator\Article',
+            'UthandoArticle' => \UthandoArticle\Hydrator\Article::class,
         ],
     ],
     'input_filters' => [
         'invokables' => [
-            'UthandoArticle' => 'UthandoArticle\InputFilter\Article',
+            'UthandoArticle' => \UthandoArticle\InputFilter\Article::class,
         ],
     ],
     'uthando_mappers' => [
         'invokables' => [
-            'UthandoArticle' => 'UthandoArticle\Mapper\Article',
+            'UthandoArticle' => \UthandoArticle\Mapper\Article::class,
         ],
     ],
     'uthando_models' => [
         'invokables' => [
-            'UthandoArticle' => 'UthandoArticle\Model\Article'
+            'UthandoArticle' => \UthandoArticle\Model\Article::class
         ],
     ],
     'uthando_services' => [
         'invokables' => [
-            'UthandoArticle' => 'UthandoArticle\Service\Article',
+            'UthandoArticle' => \UthandoArticle\Service\Article::class,
         ],
     ],
     'view_helpers' => [
         'invokables' => [
-            'UthandoArticleGetPost'     => 'UthandoArticle\View\GetPost',
-            'UthandoArticleRecentPosts' => 'UthandoArticle\View\RecentPosts',
+            'UthandoArticleGetPost'     => \UthandoArticle\View\GetPost::class,
+            'UthandoArticleRecentPosts' => \UthandoArticle\View\RecentPosts::class,
         ],
     ],
     'view_manager' => [

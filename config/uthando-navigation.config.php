@@ -10,20 +10,22 @@ return [
                 ],
                 'pages' => [
                     'list' => [
-                        'label'     => 'List All Articles',
-                        'action'    => 'list',
+                        'label'     => 'Edit Article',
+                        'action'    => 'edit',
                         'route'     => 'admin/article',
-                        'resource'  => 'menu:admin'
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
                     ],
                     'add' => [
                         'label'     => 'Add New Article',
                         'action'    => 'add',
                         'route'     => 'admin/article/edit',
-                        'resource'  => 'menu:admin'
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
                     ],
                 ],
                 'route' => 'admin/article',
-                'resource' => 'menu:admin'
+                'resource' => 'menu:admin',
             ],
         ],
     ],
