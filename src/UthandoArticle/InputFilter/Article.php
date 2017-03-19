@@ -81,6 +81,50 @@ class Article extends InputFilter
         ]);
 
         $this->add([
+            'name' => 'image',
+            'required' => false,
+            'filters' => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+            ],
+            'validators' => [
+                ['name'    => 'StringLength','options' => [
+                    'encoding' => 'UTF-8',
+                    'max'      => 255,
+                ]],
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'layout',
+            'required' => false,
+            'filters' => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+            ],
+            'validators' => [
+                ['name'    => 'StringLength','options' => [
+                    'encoding' => 'UTF-8',
+                    'max'      => 255,
+                ]],
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'lead',
+            'required' => true,
+            'filters' => [
+                ['name' => 'StringTrim'],
+                ['name' => 'StripTags'],
+            ],
+            'validators' => [
+                ['name'    => 'StringLength','options' => [
+                    'encoding' => 'UTF-8',
+                ]],
+            ],
+        ]);
+
+        $this->add([
             'name' => 'description',
             'required'      => true,
             'filters'       => [

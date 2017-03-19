@@ -50,6 +50,9 @@ class Article extends AbstractHydrator
             'description'   => $object->getDescription(),
             'resource'      => $object->getResource(),
             'pageHits'      => $object->getPageHits(),
+            'image'         => $object->getImage(),
+            'layout'        => $object->getLayout(),
+            'lead'          => $object->getLead(),
             'dateCreated'   => $this->extractValue('dateCreated', $object->getDateCreated()),
             'dateModified'  => $this->extractValue('dateModified', $object->getDateModified())
         ];

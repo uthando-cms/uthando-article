@@ -38,6 +38,9 @@ class ArticleController extends AbstractCrudController
         if (!$page) {
             $viewModel->setTemplate('uthando-article/article/404');
             return $viewModel;
+        } else {
+            $layout = ($page->getLayout()) ?: 'uthando-article/article/view';
+            $viewModel->setTemplate($layout);
         }
 
         if (!$this->isAllowed($page->getResource())) {

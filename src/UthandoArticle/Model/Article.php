@@ -61,6 +61,21 @@ class Article implements ModelInterface
     protected $pageHits = 0;
 
     /**
+     * @var string
+     */
+    protected $image;
+
+    /**
+     * @var string
+     */
+    protected $layout;
+
+    /**
+     * @var string
+     */
+    protected $lead;
+
+    /**
      * @return int
      */
     public function getArticleId()
@@ -166,5 +181,53 @@ class Article implements ModelInterface
     {
         $this->pageHits = $pageHits;
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
+    }
+
+    /**
+     * @param string $image
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLayout()
+    {
+        return $this->layout;
+    }
+
+    /**
+     * @param string $layout
+     */
+    public function setLayout($layout)
+    {
+        $this->layout = $layout;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLead()
+    {
+        return $this->lead;
+    }
+
+    /**
+     * @param string $lead
+     */
+    public function setLead($lead)
+    {
+        $this->lead = $lead;
     }
 }

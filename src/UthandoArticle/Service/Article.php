@@ -52,14 +52,51 @@ class Article extends AbstractRelationalMapperService
         $this->getEventManager()->attach([
             'pre.add', 'pre.edit'
         ], [$this, 'setValidation']);
+
+        $this->getEventManager()->attach([
+            'post.add', 'post.edit'
+        ], [$this, 'updateMenu']);
     }
 
+    /**
+     * @param Event $e
+     */
     public function setValidation(Event $e)
     {
         $form = $e->getParam('form');
+        $model = $e->getParam('model');
+        $post = $e->getParam('post');
+
+        if (!$post['slug']) {
+            $post['slug'] = $post['title'];
+        }
+
+        $e->setParam('post', $post);
+
         $form->setValidationGroup([
-            'articleId', 'userId', 'title', 'slug', 'content', 'description', 'resource',
+            'articleId', 'userId', 'title', 'slug',
+            'content', 'description', 'resource',
+            'image', 'lead', 'layout',
         ]);
+
+        $model->setDateModified();
+    }
+
+    /**
+     * @param Event $e
+     */
+    public function updateMenu(Event $e)
+    {
+        $saved = $e->getParam('saved');
+        $post = $e->getParam('post');
+
+        if ($saved) {
+            $model = $e->getParam('form')->getData();
+            /*$pageResult = $this->updateMenuItem(
+                $this->getById($model->getId()),
+                $post
+            );*/
+        }
     }
 
     /**
@@ -75,6 +112,10 @@ class Article extends AbstractRelationalMapperService
         return $article;
     }
 
+    /**
+     * @param $slug
+     * @return mixed
+     */
     public function getArticleBySlug($slug)
     {
         $slug = (string)$slug;
@@ -87,52 +128,15 @@ class Article extends AbstractRelationalMapperService
         return $article;
     }
 
+    /**
+     * @param ArticleModel $article
+     */
     public function addPageHit(ArticleModel $article)
     {
         $pageHits = $article->getPageHits();
         $pageHits++;
         $article->setPageHits($pageHits);
         $this->save($article);
-    }
-
-    public function add(array $post, Form $form = null)
-    {
-        if (!$post['slug']) {
-            $post['slug'] = $post['title'];
-        }
-
-        $insertId = parent::add($post);
-
-        if (!$insertId instanceof Form) {
-            $pageResult = $this->updateMenuItem(
-                $this->getById($insertId),
-                $post
-            );
-        }
-
-        return $insertId;
-    }
-
-    /**
-     * @param ModelInterface $article
-     * @param array $post
-     * @param Form $form
-     * @return int
-     */
-    public function edit(ModelInterface $article, array $post, Form $form = null)
-    {
-        $article->setDateModified();
-        $result = parent::edit($article, $post);
-
-        // find page first, if exists delete it before updating.
-
-        if (!$result instanceof Form) {
-            $pageResult = $this->updateMenuItem(
-                $this->getById($article->getArticleId()), $post
-            );
-        }
-
-        return $result;
     }
 
     /**
