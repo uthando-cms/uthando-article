@@ -17,12 +17,13 @@ return [
                         'visible'   => false,
                     ],
                     'add' => [
-                        'label'     => 'Add New Article',
+                        'label'     => 'Add Article',
                         'action'    => 'add',
                         'route'     => 'admin/article/edit',
                         'resource'  => 'menu:admin',
                         'visible'   => false,
                     ],
+
                 ],
                 'route' => 'admin/article',
                 'resource' => 'menu:admin',
