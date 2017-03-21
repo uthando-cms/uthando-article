@@ -25,16 +25,6 @@ class Article extends Form
     public function init()
     {
         $this->add([
-            'name' => 'articleId',
-            'type' => 'hidden',
-        ]);
-
-        $this->add([
-            'name' => 'userId',
-            'type' => 'hidden',
-        ]);
-
-        $this->add([
             'name' => 'title',
             'type' => 'text',
             'options' => [
@@ -82,6 +72,34 @@ class Article extends Form
             ],
             'attributes' => [
                 'placeholder' => 'Description',
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'position',
+            'type' => 'MenuItemList',
+            'options' => [
+                'label' => 'Menu Placement',
+                'required' => false,
+                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
+                'column-size' => 'sm-10',
+                'label_attributes' => [
+                    'class' => 'col-sm-2',
+                ],
+            ],
+        ]);
+
+        $this->add([
+            'name' => 'menuInsertType',
+            'type' => 'MenuItemRadio',
+            'options' => [
+                'label' => 'Insert Type',
+                'required' => false,
+                'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
+                'column-size' => 'sm-10',
+                'label_attributes' => [
+                    'class' => 'col-sm-2',
+                ],
             ],
         ]);
 
@@ -207,6 +225,16 @@ class Article extends Form
             'attributes' => [
                 'disabled' => true,
             ],
+        ]);
+
+        $this->add([
+            'name' => 'articleId',
+            'type' => 'hidden',
+        ]);
+
+        $this->add([
+            'name' => 'userId',
+            'type' => 'hidden',
         ]);
 
         $this->add([

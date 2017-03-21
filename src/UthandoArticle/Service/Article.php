@@ -89,13 +89,32 @@ class Article extends AbstractRelationalMapperService
     {
         $saved = $e->getParam('saved');
         $post = $e->getParam('post');
+        $service = $e->getTarget();
 
         if ($saved) {
-            $model = $e->getParam('form')->getData();
-            /*$pageResult = $this->updateMenuItem(
-                $this->getById($model->getId()),
-                $post
-            );*/
+            $article = $e->getParam('form')->getData();
+
+            if ($post['menuInsertType'] != 'noInsert') {
+                $ids = explode('-', $post['position']);
+                $data = [
+                    'menuId' => $ids[0],
+                    'label' => $article->getTitle(),
+                    'position' => $post['position'],
+                    'params' => 'params.slug=' . $article->getSlug(),
+                    'route' => 'article',
+                    'resource' => '',
+                    'visible' => 1,
+                    'menuInsertType' => $post['menuInsertType']
+                ];
+
+                $page = $service->getMenuItemService()->getMenuItemByMenuIdAndLabel($ids[0], $article->getTitle());
+
+                if (!$page) {
+                    $service->getMenuItemService()->add($data);
+                } else {
+                    $service->getMenuItemService()->edit($page, $data);
+                }
+            }
         }
     }
 
@@ -149,36 +168,6 @@ class Article extends AbstractRelationalMapperService
         /* @var $mapper \UthandoArticle\Mapper\Article */
         $mapper = $this->getMapper();
         return $mapper->getArticlesByDate($limit);
-    }
-
-    /**
-     * @param $article
-     * @param $post
-     * @throws \Exception
-     */
-    protected function updateMenuItem($article, $post)
-    {
-        if ($post['position'] && $post['menuInsertType'] != 'noInsert') {
-            $ids = explode('-', $post['position']);
-            $data = [
-                'menuId' => $ids[0],
-                'label' => $article->getTitle(),
-                'position' => $ids[1],
-                'params' => 'params.slug=' . $article->getSlug(),
-                'route' => 'article',
-                'resource' => '',
-                'visible' => 1,
-                'menuInsertType' => $post['menuInsertType']
-            ];
-
-            $page = $this->getMenuItemService()->getMenuItemByMenuIdAndLabel($ids[0], $article->getTitle());
-
-            if (!$page) {
-                $this->getMenuItemService()->add($data);
-            } else {
-                $this->getMenuItemService()->edit($page, $data);
-            }
-        }
     }
 
     /**
