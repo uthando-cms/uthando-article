@@ -10,6 +10,13 @@ return [
                 ],
                 'pages' => [
                     'list' => [
+                        'label'     => 'Article List',
+                        'action'    => 'index',
+                        'route'     => 'admin/article',
+                        'resource'  => 'menu:admin',
+                        'visible'   => false,
+                    ],
+                    'edit' => [
                         'label'     => 'Edit Article',
                         'action'    => 'edit',
                         'route'     => 'admin/article',
