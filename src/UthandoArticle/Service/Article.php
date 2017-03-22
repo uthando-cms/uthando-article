@@ -50,6 +50,10 @@ class Article extends AbstractRelationalMapperService
     public function attachEvents()
     {
         $this->getEventManager()->attach([
+            'pre.form'
+        ], [$this, 'setSlug']);
+
+        $this->getEventManager()->attach([
             'pre.add', 'pre.edit'
         ], [$this, 'setValidation']);
 
@@ -61,25 +65,41 @@ class Article extends AbstractRelationalMapperService
     /**
      * @param Event $e
      */
+    public function setSlug(Event $e)
+    {
+        $data = $e->getParam('data');
+
+        if (null === $data) {
+            return;
+        }
+
+        if ($data instanceof ArticleModel) {
+            $data->setSlug($data->getTitle());
+        } elseif (is_array($data)) {
+            $data['slug'] = $data['slug'];
+        }
+
+        $e->setParam('data', $data);
+    }
+
+    /**
+     * @param Event $e
+     */
     public function setValidation(Event $e)
     {
         $form = $e->getParam('form');
         $model = $e->getParam('model');
         $post = $e->getParam('post');
 
-        if (!$post['slug']) {
-            $post['slug'] = $post['title'];
+        if ($model instanceof ArticleModel) {
+            $model->setDateModified();
         }
-
-        $e->setParam('post', $post);
 
         $form->setValidationGroup([
             'articleId', 'userId', 'title', 'slug',
             'content', 'description', 'resource',
             'image', 'lead', 'layout',
         ]);
-
-        $model->setDateModified();
     }
 
     /**

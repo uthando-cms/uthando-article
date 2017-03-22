@@ -47,7 +47,7 @@ class Article extends Form
             'options' => [
                 'label'       => 'Slug',
                 'required'    => false,
-                'inline-help' => 'If you leave this blank the the title will be used for the slug.',
+                'help-block' => 'If you leave this blank the the title will be used for the slug.',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
                 'column-size' => 'sm-10',
                 'label_attributes' => [
