@@ -16,7 +16,6 @@ return [
                                 '__NAMESPACE__' => 'UthandoArticle\Controller',
                                 'controller'    => 'Article',
                                 'action'        => 'index',
-                                'force-ssl'     => 'ssl'
                             ],
                         ],
                         'may_terminate' => true,
@@ -31,7 +30,6 @@ return [
                                     ],
                                     'defaults'      => [
                                         'action'        => 'edit',
-                                        'force-ssl'     => 'ssl'
                                     ],
                                 ],
                             ],
@@ -45,7 +43,6 @@ return [
                                     'defaults'      => [
                                         'action'        => 'list',
                                         'page'          => 1,
-                                        'force-ssl'     => 'ssl'
                                     ],
                                 ],
                             ],
