@@ -59,7 +59,6 @@ return [
                         '__NAMESPACE__' => 'UthandoArticle\Controller',
                         'controller'    => 'Article',
                         'action'        => 'view',
-                        'force-ssl'     => 'ssl',
                         'model'         => false,
                     ],
                 ],
