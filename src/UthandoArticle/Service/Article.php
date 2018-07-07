@@ -11,6 +11,7 @@
 namespace UthandoArticle\Service;
 
 use UthandoArticle\Model\Article as ArticleModel;
+use UthandoCommon\Mapper\AbstractNestedSet;
 use UthandoCommon\Model\ModelInterface;
 use UthandoCommon\Service\AbstractRelationalMapperService;
 use Zend\EventManager\Event;
@@ -114,7 +115,7 @@ class Article extends AbstractRelationalMapperService
         if ($saved) {
             $article = $e->getParam('form')->getData();
 
-            if ($post['menuInsertType'] != 'noInsert') {
+            if ($post['menuInsertType'] !== AbstractNestedSet::INSERT_NO) {
                 $ids = explode('-', $post['position']);
                 $data = [
                     'menuId' => $ids[0],
@@ -124,13 +125,14 @@ class Article extends AbstractRelationalMapperService
                     'route' => 'article',
                     'resource' => '',
                     'visible' => 1,
-                    'menuInsertType' => $post['menuInsertType']
+                    'menuInsertType' => $post['menuInsertType'],
+                    'security' => $post['security'],
                 ];
 
                 $page = $service->getMenuItemService()->getMenuItemByMenuIdAndLabel($ids[0], $article->getTitle());
 
                 if (!$page) {
-                    $service->getMenuItemService()->add($data);
+                    $result = $service->getMenuItemService()->add($data);
                 } else {
                     $service->getMenuItemService()->edit($page, $data);
                 }

@@ -43,7 +43,7 @@ class ArticleController extends AbstractCrudController
             $viewModel->setTemplate($layout);
         }
 
-        if (!$this->isAllowed($page->getResource())) {
+        if (!$this->isAllowed($page->getResource(), null)) {
             throw new \Exception('Not allowed!');
         }
 

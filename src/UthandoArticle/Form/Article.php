@@ -13,6 +13,7 @@ namespace UthandoArticle\Form;
 
 use TwbBundle\Form\View\Helper\TwbBundleForm;
 use Zend\Form\Element\Button;
+use Zend\Form\Element\Csrf;
 use Zend\Form\Form;
 
 /**
@@ -239,7 +240,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'security',
-            'type' => 'csrf',
+            'type' => Csrf::class,
         ]);
     }
 }
