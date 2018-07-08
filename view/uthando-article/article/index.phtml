@@ -28,14 +28,16 @@
     </div>
 </div>
 
-<?php $this->inlineScript()->captureStart(); ?>
-$(document).ready(function(){
-	$('#table-article').dataGrid({
-    	url : 'article/list',
-    	query: { sort : 'articleId' },
-    	searchForm : $('#search-article'),
-    	paging : 'links',
-    	columnSort: true
-	});
-});
-<?php $this->inlineScript()->captureEnd(); ?>
+<?php $this->placeholder('js-scripts')->captureStart();?>
+<script>
+    $(document).ready(function(){
+        $('#table-article').dataGrid({
+            url : 'article/list',
+            query: { sort : 'articleId' },
+            searchForm : $('#search-article'),
+            paging : 'links',
+            columnSort: true
+        });
+    });
+</script>
+<?php $this->placeholder('js-scripts')->captureEnd();?>
