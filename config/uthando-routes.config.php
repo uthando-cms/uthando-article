@@ -1,5 +1,7 @@
 <?php
 
+use UthandoArticle\Controller\ArticleController;
+
 return [
     'router' => [
         'routes' => [
@@ -14,7 +16,7 @@ return [
                             ],
                             'defaults' => [
                                 '__NAMESPACE__' => 'UthandoArticle\Controller',
-                                'controller'    => 'Article',
+                                'controller'    => ArticleController::class,
                                 'action'        => 'index',
                             ],
                         ],

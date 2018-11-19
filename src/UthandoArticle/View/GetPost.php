@@ -11,6 +11,8 @@
 
 namespace UthandoArticle\View;
 
+use UthandoArticle\Service\ArticleService;
+use UthandoCommon\Service\ServiceManager;
 use UthandoCommon\View\AbstractViewHelper;
 
 /**
@@ -22,11 +24,11 @@ class GetPost extends AbstractViewHelper
 {
     public function __invoke($slug)
     {
-        /* @var $service \UthandoArticle\Service\Article */
+        /* @var $service \UthandoArticle\Service\ArticleService */
         $service = $this->getServiceLocator()
             ->getServiceLocator()
-            ->get('UthandoServiceManager')
-             ->get('UthandoArticle');
+            ->get(ServiceManager::class)
+             ->get(ArticleService::class);
         
         $model = $service->getArticleBySlug($slug);
         

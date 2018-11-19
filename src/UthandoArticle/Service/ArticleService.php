@@ -10,29 +10,34 @@
 
 namespace UthandoArticle\Service;
 
-use UthandoArticle\Model\Article as ArticleModel;
+use UthandoArticle\Form\ArticleForm;
+use UthandoArticle\Hydrator\ArticleHydrator;
+use UthandoArticle\InputFilter\ArticleInputFilter;
+use UthandoArticle\Mapper\ArticleMapper;
+use UthandoArticle\Model\ArticleModel;
 use UthandoCommon\Mapper\AbstractNestedSet;
-use UthandoCommon\Model\ModelInterface;
 use UthandoCommon\Service\AbstractRelationalMapperService;
+use UthandoNavigation\Service\MenuItemService;
+use UthandoUser\Service\UserService;
 use Zend\EventManager\Event;
-use Zend\Form\Form;
 
 /**
  * Class Article
  *
  * @package UthandoArticle\Service
  */
-class Article extends AbstractRelationalMapperService
+class ArticleService extends AbstractRelationalMapperService
 {
     /**
-     * @var \UthandoNavigation\Service\MenuItem
+     * @var \UthandoNavigation\Service\MenuItemService
      */
     protected $menuItemService;
 
-    /**
-     * @var string
-     */
-    protected $serviceAlias = 'UthandoArticle';
+    protected $form         = ArticleForm::class;
+    protected $hydrator     = ArticleHydrator::class;
+    protected $inputFilter  = ArticleInputFilter::class;
+    protected $mapper       = ArticleMapper::class;
+    protected $model        = ArticleModel::class;
 
     /**
      * @var array
@@ -40,7 +45,7 @@ class Article extends AbstractRelationalMapperService
     protected $referenceMap = [
         'user' => [
             'refCol' => 'userId',
-            'service' => 'UthandoUser',
+            'service' => UserService::class,
         ],
     ];
 
@@ -187,19 +192,19 @@ class Article extends AbstractRelationalMapperService
     public function getRecentPosts($limit)
     {
         $limit = (int)$limit;
-        /* @var $mapper \UthandoArticle\Mapper\Article */
+        /* @var $mapper ArticleModel */
         $mapper = $this->getMapper();
         return $mapper->getArticlesByDate($limit);
     }
 
     /**
-     * @return \UthandoNavigation\Service\MenuItem
+     * @return \UthandoNavigation\Service\MenuItemService
      */
     protected function getMenuItemService()
     {
         if (!$this->menuItemService) {
             $sl = $this->getServiceLocator();
-            $this->menuItemService = $sl->get('UthandoNavigationMenuItem');
+            $this->menuItemService = $sl->get(MenuItemService::class);
         }
 
         return $this->menuItemService;

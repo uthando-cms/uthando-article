@@ -11,14 +11,19 @@
 
 namespace UthandoArticle\InputFilter;
 
+use UthandoCommon\Filter\Slug;
+use UthandoCommon\Filter\Ucwords;
+use Zend\Filter\StringTrim;
+use Zend\Filter\StripTags;
 use Zend\InputFilter\InputFilter;
+use Zend\Validator\StringLength;
 
 /**
  * Class Article
  *
  * @package UthandoArticle\InputFilter
  */
-class Article extends InputFilter
+class ArticleInputFilter extends InputFilter
 {
     public function init()
     {
@@ -26,11 +31,8 @@ class Article extends InputFilter
             'name' => 'articleId',
             'required'      => false,
             'filters'       => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-            ],
-            'validators'    => [
-
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
         ]);
 
@@ -38,11 +40,8 @@ class Article extends InputFilter
             'name' => 'userId',
             'required'      => true,
             'filters'       => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-            ],
-            'validators'    => [
-
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
         ]);
 
@@ -50,12 +49,12 @@ class Article extends InputFilter
             'name' => 'title',
             'required'      => true,
             'filters'       => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-                ['name' => 'UthandoCommon\Filter\Ucwords'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+                ['name' => Ucwords::class],
             ],
             'validators'    => [
-                ['name' => 'StringLength', 'options' => [
+                ['name' => StringLength::class, 'options' => [
                     'encoding' => 'UTF-8',
                     'min' => 2,
                     'max' => 255
@@ -67,12 +66,12 @@ class Article extends InputFilter
             'name' => 'slug',
             'required'      => true,
             'filters'       => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
-                ['name' => 'UthandoCommon\Filter\Slug'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
+                ['name' => Slug::class],
             ],
             'validators'    => [
-                ['name' => 'StringLength', 'options' => [
+                ['name' => StringLength::class, 'options' => [
                     'encoding' => 'UTF-8',
                     'min' => 2,
                     'max' => 255
@@ -84,11 +83,11 @@ class Article extends InputFilter
             'name' => 'image',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                     'max'      => 255,
                 ]],
@@ -99,11 +98,11 @@ class Article extends InputFilter
             'name' => 'layout',
             'required' => false,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                     'max'      => 255,
                 ]],
@@ -114,11 +113,11 @@ class Article extends InputFilter
             'name' => 'lead',
             'required' => true,
             'filters' => [
-                ['name' => 'StringTrim'],
-                ['name' => 'StripTags'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                 ]],
             ],
@@ -128,11 +127,11 @@ class Article extends InputFilter
             'name' => 'description',
             'required'      => true,
             'filters'       => [
-                ['name' => 'StripTags'],
-                ['name' => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
             'validators'    => [
-                ['name' => 'StringLength', 'options' => [
+                ['name' => StringLength::class, 'options' => [
                     'encoding' => 'UTF-8',
                     'min' => 30,
                     'max' => 255
@@ -144,11 +143,11 @@ class Article extends InputFilter
             'name' => 'resource',
             'required'   => false,
             'filters'    => [
-                ['name'    => 'StripTags'],
-                ['name'    => 'StringTrim'],
+                ['name' => StripTags::class],
+                ['name' => StringTrim::class],
             ],
             'validators' => [
-                ['name'    => 'StringLength','options' => [
+                ['name'    => StringLength::class,'options' => [
                     'encoding' => 'UTF-8',
                     'min'      => 2,
                     'max'      => 50,

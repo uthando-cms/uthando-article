@@ -12,8 +12,15 @@
 namespace UthandoArticle\Form;
 
 use TwbBundle\Form\View\Helper\TwbBundleForm;
+use UthandoArticle\Form\Element\ResourceList;
+use UthandoNavigation\Form\Element\MenuItemList;
+use UthandoNavigation\Form\Element\MenuItemRadio;
 use Zend\Form\Element\Button;
 use Zend\Form\Element\Csrf;
+use Zend\Form\Element\DateTime;
+use Zend\Form\Element\Hidden;
+use Zend\Form\Element\Text;
+use Zend\Form\Element\Textarea;
 use Zend\Form\Form;
 
 /**
@@ -21,13 +28,13 @@ use Zend\Form\Form;
  *
  * @package UthandoArticle\Form
  */
-class Article extends Form
+class ArticleForm extends Form
 {
     public function init()
     {
         $this->add([
             'name' => 'title',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label'     => 'Title',
                 'required'  => true,
@@ -44,7 +51,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'slug',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label'       => 'Slug',
                 'required'    => false,
@@ -62,7 +69,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'description',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label' => 'Description',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -78,7 +85,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'position',
-            'type' => 'MenuItemList',
+            'type' => MenuItemList::class,
             'options' => [
                 'label' => 'Menu Placement',
                 'required' => false,
@@ -92,7 +99,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'menuInsertType',
-            'type' => 'MenuItemRadio',
+            'type' => MenuItemRadio::class,
             'options' => [
                 'label' => 'Insert Type',
                 'required' => false,
@@ -106,7 +113,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'resource',
-            'type' => 'UthandoArticleResourceList',
+            'type' => ResourceList::class,
             'options' => [
                 'label' => 'Permissions',
                 'required' => false,
@@ -123,7 +130,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'image',
-            'type' => 'text',
+            'type' => Text::class,
             'attributes' => [
                 'placeholder' => 'Image',
                 'id' => 'article-image',
@@ -143,7 +150,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'layout',
-            'type' => 'text',
+            'type' => Text::class,
             'options' => [
                 'label' => 'Layout',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -159,7 +166,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'lead',
-            'type' => 'textarea',
+            'type' => Textarea::class,
             'options' => [
                 'label' => 'Lead Text',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -177,7 +184,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'content',
-            'type' => 'textarea',
+            'type' => Textarea::class,
             'options' => [
                 'label' => 'HTML Content',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -196,7 +203,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'dateCreated',
-            'type' => 'DateTime',
+            'type' => DateTime::class,
             'options' => [
                 'label' => 'Date Created',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -213,7 +220,7 @@ class Article extends Form
 
         $this->add([
             'name' => 'dateModified',
-            'type' => 'DateTime',
+            'type' => DateTime::class,
             'options' => [
                 'label' => 'Date Modified',
                 'twb-layout' => TwbBundleForm::LAYOUT_HORIZONTAL,
@@ -230,12 +237,12 @@ class Article extends Form
 
         $this->add([
             'name' => 'articleId',
-            'type' => 'hidden',
+            'type' => Hidden::class,
         ]);
 
         $this->add([
             'name' => 'userId',
-            'type' => 'hidden',
+            'type' => Hidden::class,
         ]);
 
         $this->add([

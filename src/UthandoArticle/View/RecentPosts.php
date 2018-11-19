@@ -11,6 +11,8 @@
 
 namespace UthandoArticle\View;
 
+use UthandoArticle\Service\ArticleService;
+use UthandoCommon\Service\ServiceManager;
 use UthandoCommon\View\AbstractViewHelper;
 
 /**
@@ -24,8 +26,8 @@ class RecentPosts extends AbstractViewHelper
     {
         $service = $this->getServiceLocator()
             ->getServiceLocator()
-            ->get('UthandoServiceManager')
-             ->get('UthandoArticle');
+            ->get(ServiceManager::class)
+             ->get(ArticleService::class);
         
         $models = $service->getRecentPosts($number);
         

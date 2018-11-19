@@ -8,8 +8,9 @@
  * @license   see LICENSE
  */
 
-namespace UthandoArticle\Mvc\Controller;
+namespace UthandoArticle\Controller;
 
+use UthandoArticle\Service\ArticleService;
 use UthandoCommon\Controller\AbstractCrudController;
 use Zend\View\Model\ViewModel;
 
@@ -21,7 +22,7 @@ use Zend\View\Model\ViewModel;
 class ArticleController extends AbstractCrudController
 {
     protected $controllerSearchOverrides = ['sort' => 'articleId'];
-    protected $serviceName = 'UthandoArticle';
+    protected $serviceName = ArticleService::class;
     protected $route = 'admin/article';
 
     public function viewAction()

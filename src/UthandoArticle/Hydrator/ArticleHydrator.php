@@ -19,7 +19,7 @@ use UthandoCommon\Hydrator\Strategy\DateTime as DateTimeStrategy;
  *
  * @package UthandoArticle\Hydrator
  */
-class Article extends AbstractHydrator
+class ArticleHydrator extends AbstractHydrator
 {
 
     public function __construct()
@@ -36,7 +36,7 @@ class Article extends AbstractHydrator
 
     /**
      *
-     * @param $object \UthandoArticle\Model\Article
+     * @param $object \UthandoArticle\Model\ArticleModel
      * @return array
      */
     public function extract($object)

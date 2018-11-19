@@ -17,14 +17,14 @@ use UthandoCommon\Mapper\AbstractDbMapper;
  *
  * @package UthandoArticle\Mapper
  */
-class Article extends AbstractDbMapper
+class ArticleMapper extends AbstractDbMapper
 {
     protected $table = 'article';
     protected $primary = 'articleId';
 
     /**
      * @param string $slug
-     * @return \UthandoArticle\Model\Article
+     * @return array|\ArrayObject|null|object
      */
     public function getArticleBySlug($slug)
     {

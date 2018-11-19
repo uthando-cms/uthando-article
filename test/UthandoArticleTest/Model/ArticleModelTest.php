@@ -10,7 +10,7 @@
 
 namespace UthandoArticleTest\Model;
 
-use UthandoArticle\Model\Article as ArticleModel;
+use UthandoArticle\Model\ArticleModel as ArticleModel;
 use UthandoArticleTest\Framework\TestCase;
 
 class ArticleModelTest extends TestCase

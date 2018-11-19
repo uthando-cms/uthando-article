@@ -22,7 +22,7 @@ use UthandoUser\Model\UserTrait;
  *
  * @package UthandoArticle\Model
  */
-class Article implements ModelInterface
+class ArticleModel implements ModelInterface
 {
     use Model,
         UserTrait,

@@ -1,46 +1,29 @@
 <?php
+
+use UthandoArticle\Controller\ArticleController;
+use UthandoArticle\Service\ArticleService;
+use UthandoArticle\View\GetPost;
+use UthandoArticle\View\RecentPosts;
+
 return [
     'controllers' => [
         'invokables' => [
-            'UthandoArticle\Controller\Article' => \UthandoArticle\Mvc\Controller\ArticleController::class,
-        ],
-    ],
-    'form_elements' => [
-        'invokables' => [
-            'UthandoArticle'                => \UthandoArticle\Form\Article::class,
-
-            'UthandoArticleResourceList'    => UthandoArticle\Form\Element\ResourceList::class,
-        ],
-    ],
-    'hydrators' => [
-        'invokables' => [
-            'UthandoArticle' => \UthandoArticle\Hydrator\Article::class,
-        ],
-    ],
-    'input_filters' => [
-        'invokables' => [
-            'UthandoArticle' => \UthandoArticle\InputFilter\Article::class,
-        ],
-    ],
-    'uthando_mappers' => [
-        'invokables' => [
-            'UthandoArticle' => \UthandoArticle\Mapper\Article::class,
-        ],
-    ],
-    'uthando_models' => [
-        'invokables' => [
-            'UthandoArticle' => \UthandoArticle\Model\Article::class
+            ArticleController::class => ArticleController::class,
         ],
     ],
     'uthando_services' => [
         'invokables' => [
-            'UthandoArticle' => \UthandoArticle\Service\Article::class,
+            ArticleService::class => ArticleService::class,
         ],
     ],
     'view_helpers' => [
+        'aliases' => [
+            'UthandoArticleGetPost'     => GetPost::class,
+            'UthandoArticleRecentPosts' => RecentPosts::class,
+        ],
         'invokables' => [
-            'UthandoArticleGetPost'     => \UthandoArticle\View\GetPost::class,
-            'UthandoArticleRecentPosts' => \UthandoArticle\View\RecentPosts::class,
+            GetPost::class     => GetPost::class,
+            RecentPosts::class => RecentPosts::class,
         ],
     ],
     'view_manager' => [
@@ -57,7 +40,7 @@ return [
                     ],
                     'defaults' => [
                         '__NAMESPACE__' => 'UthandoArticle\Controller',
-                        'controller'    => 'Article',
+                        'controller'    => ArticleController::class,
                         'action'        => 'view',
                         'model'         => false,
                     ],

@@ -1,5 +1,7 @@
 <?php
 
+use UthandoArticle\Controller\ArticleController;
+
 return [
     'uthando_user' => [
         'acl' => [
@@ -8,7 +10,7 @@ return [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoArticle\Controller\Article' => ['action' => ['view']],
+                                ArticleController::class => ['action' => ['view']],
                             ],
                             'resources' => ['article:guest'],
                         ],
@@ -25,7 +27,7 @@ return [
                     'privileges' => [
                         'allow' => [
                             'controllers' => [
-                                'UthandoArticle\Controller\Article' => ['action' => 'all'],
+                                ArticleController::class => ['action' => 'all'],
                             ],
                             'resources' => ['article:admin'],
                         ],
@@ -33,7 +35,7 @@ return [
                 ],
             ],
             'resources' => [
-                'UthandoArticle\Controller\Article',
+                ArticleController::class,
                 'article:guest',
                 'article:user',
                 'article:admin',
