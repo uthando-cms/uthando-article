@@ -111,7 +111,7 @@ class ArticleInputFilter extends InputFilter
 
         $this->add([
             'name' => 'lead',
-            'required' => true,
+            'required' => false,
             'filters' => [
                 ['name' => StripTags::class],
                 ['name' => StringTrim::class],
