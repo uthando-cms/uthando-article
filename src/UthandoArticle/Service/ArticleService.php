@@ -55,9 +55,9 @@ class ArticleService extends AbstractRelationalMapperService
      */
     public function attachEvents()
     {
-        $this->getEventManager()->attach([
-            'pre.form'
-        ], [$this, 'setSlug']);
+        $this->getEventManager()->attach(
+            self::EVENT_PRE_PREPARE_FORM, [$this, 'setSlug']
+        );
 
         $this->getEventManager()->attach([
             'pre.add', 'pre.edit'
@@ -82,7 +82,7 @@ class ArticleService extends AbstractRelationalMapperService
         if ($data instanceof ArticleModel) {
             $data->setSlug($data->getTitle());
         } elseif (is_array($data)) {
-            $data['slug'] = $data['slug'];
+            $data['slug'] = $data['title'];
         }
 
         $e->setParam('data', $data);
